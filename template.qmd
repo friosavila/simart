@@ -3,6 +3,8 @@ title: Simart Template
 format:
   simart-pdf:  
     keep-tex: true  
+    header-includes: | 
+      \usepackage{lipsum}
   simart-html: default
 author:
   - name: Sarah Malloc
@@ -22,8 +24,7 @@ author:
       - Another Affiliation
 abstract: |
   This document is a template demonstrating the Simart format.
-  In addition to few tips on how to use quarto for producing articles.
-
+  In addition to few tips on how to use quarto for producing articles.    
 keywords: [template, demo]
 bibliography: bibliography.bib  
 ---

@@ -52,6 +52,46 @@
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -111,6 +151,7 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{lipsum}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -192,7 +233,8 @@ Another Affiliation\\
 
 \maketitle
 \begin{abstract}
-This document is a template demonstrating the Simart format.
+This document is a template demonstrating the Simart format. In addition
+to few tips on how to use quarto for producing articles.
 \end{abstract}
  
 \vspace{.2in}
@@ -206,19 +248,152 @@ This document is a template demonstrating the Simart format.
 \clearpage\pagenumbering{arabic}
 \newpage
 \spacingset{1.2} % DON'T change the spacing!
-\renewcommand*\contentsname{Table of contents}
-{
-\hypersetup{linkcolor=}
-\setcounter{tocdepth}{2}
-\tableofcontents
-}
 \section{Introduction}\label{sec-intro}
 
-\emph{TODO} Create a template that demonstrates the appearance,
-formatting, layout, and functionality of your format. Learn more about
-journal formats at \url{https://quarto.org/docs/journals/}.
+This is a very simple template for the creation of academic articles. It
+is based on the documentclass article. It has also been adapted so it
+includes the information of authors, thank you note, corresponding
+author information, etc. Using APA7th for citations.
 
-cite Cameron and Trivedi (2013)
+It also provides a quick review of some of the options I learn to use to
+create sections of interest. Just for fun, it also generates LIPSUM
+text, to fill the rest of the text.
+
+\section{Citing documents}\label{sec-cite}
+
+There are two ways to cite documents. One is using standard author(year)
+format, as well as a (author, year) format.
+
+In the first case you use \texttt{@CameronTrivedi2013} to obtain Cameron
+and Trivedi (2013).
+
+In the second case you use \texttt{{[}@CameronTrivedi2013{]}} to obtain
+(Cameron and Trivedi, 2013).
+
+\section{Math}\label{math}
+
+You can write math in-line using latex standard syntax. For example
+\texttt{\$\textbackslash{}beta\$} would create \(\beta\).
+
+To write longer equations you need to use \texttt{\$\$} before and after
+the expression. I find it useful to start a new line to do so. As in the
+following example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{$$y = }\SpecialCharTok{\textbackslash{}beta}\SpecialStringTok{ X + }\SpecialCharTok{\textbackslash{}varepsilon}
+\SpecialStringTok{$$}
+\end{Highlighting}
+\end{Shaded}
+
+\[y = \beta X + \varepsilon
+\]
+
+For multiple equation formulas, it may be convinient to use
+\texttt{\textbackslash{}begin\{aligned\}} and
+\texttt{\textbackslash{}end\{aligned\}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{$$}
+\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{aligned}\NormalTok{\}}
+\SpecialStringTok{y \&= }\SpecialCharTok{\textbackslash{}beta}\SpecialStringTok{ X + }\SpecialCharTok{\textbackslash{}varepsilon}\SpecialStringTok{ }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\SpecialCharTok{\textbackslash{}varepsilon}\SpecialStringTok{ \&}\SpecialCharTok{\textbackslash{}sim}\SpecialStringTok{ N(0,}\SpecialCharTok{\textbackslash{}sigma}\SpecialStringTok{\^{}2)}
+\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{aligned}\NormalTok{\}}
+\SpecialStringTok{$$}
+\end{Highlighting}
+\end{Shaded}
+
+\[
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+\]
+
+These equations can be easily cross referenced using
+\texttt{\{\#eq-something\}} after \texttt{\$\$}. Instead of something,
+we just need a unique id to call to. For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{$$}
+\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{aligned}\NormalTok{\}}
+\SpecialStringTok{y \&= }\SpecialCharTok{\textbackslash{}beta}\SpecialStringTok{ X + }\SpecialCharTok{\textbackslash{}varepsilon}\SpecialStringTok{ }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\SpecialCharTok{\textbackslash{}varepsilon}\SpecialStringTok{ \&}\SpecialCharTok{\textbackslash{}sim}\SpecialStringTok{ N(0,}\SpecialCharTok{\textbackslash{}sigma}\SpecialStringTok{\^{}2)}
+\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{aligned}\NormalTok{\}}
+\SpecialStringTok{$$}\NormalTok{\{\#eq{-}ols\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{equation}\phantomsection\label{eq-ols}{
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+}\end{equation}
+
+This can now be referenced using \texttt{@eq-ols}, this will provide
+Equation~\ref{eq-ols}.
+
+\section{Tables and cross-references}\label{tables-and-cross-references}
+
+Starting with Quarto 1.4 it is really simple to add tables and
+cross-reference in text.
+
+\subsection{Adding pictures as tables}\label{adding-pictures-as-tables}
+
+\begin{table}
+
+\caption{\label{tbl-table1}}
+
+\centering{
+
+\captionsetup{labelsep=none}\includegraphics{pic_table.png}
+
+}
+
+\end{table}%
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#tbl{-}table1\}}
+\NormalTok{![](pic\_table.png)\{fig{-}align=center\}}
+\NormalTok{Table made with a pciture}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{@tbl-table1}: Table~\ref{tbl-table1} is a table that was
+constructed in Excel, saved as figure, and reused in quarto.
+
+\subsection{Adding Mark down as
+tables}\label{adding-mark-down-as-tables}
+
+\subsection{Adding HTML as tables}\label{adding-html-as-tables}
+
+\subsection{Adding Latex as tables}\label{adding-latex-as-tables}
+
+\section{Adding References section}\label{adding-references-section}
+
+to add reference section at the end of your document, you can use the
+following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# References \{.unnumbered\}}
+
+\NormalTok{::: \{\#refs\}}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+The option \texttt{\{.unnumbered\}} request not to add a number to the
+section. whereas the fenced code request to add the references in the
+section of your choice.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
@@ -227,6 +402,21 @@ Cameron, A. C., and Trivedi, P. K. (2013). \emph{Regression analysis of
 count data} (2nd ed.). Cambridge University Press.
 
 \end{CSLReferences}
+
+\newpage{}
+
+\appendix
+
+\section{Appendix on how to add an
+appendix}\label{appendix-on-how-to-add-an-appendix}
+
+I find that adding an appendix requires to pieces of code. First, after
+reference one may add \texttt{} to start a new page. And use the latex
+code \texttt{\textbackslash{}appendix}, to start the appendix section.
+
+\section{second appendix}\label{second-appendix}
+
+\subsection{sub appendix}\label{sub-appendix}
 
 
 
