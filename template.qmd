@@ -1,7 +1,7 @@
 ---
 title: Simart Template
 format:
-  simart-pdf:
+  simart-pdf:  
     keep-tex: true  
   simart-html: default
 author:
@@ -22,12 +22,134 @@ author:
       - Another Affiliation
 abstract: |
   This document is a template demonstrating the Simart format.
+  In addition to few tips on how to use quarto for producing articles.
+
 keywords: [template, demo]
 bibliography: bibliography.bib  
 ---
 
-## Introduction {#sec-intro}
+# Introduction {#sec-intro}
 
-*TODO* Create a template that demonstrates the appearance, formatting, layout, and functionality of your format. Learn more about journal formats at <https://quarto.org/docs/journals/>.
+This is a very simple template for the creation of academic articles. It is based on the documentclass article. It has also been adapted so it includes the information of authors, thank you note, corresponding author information, etc. Using APA7th for citations. 
 
-cite @CameronTrivedi2013
+It also provides a quick review of some of the options I learn to use to create sections of interest. Just for fun, it also generates LIPSUM text, to fill the rest of the text.
+
+
+
+# Citing documents {#sec-cite}
+
+There are two ways to cite documents. One is using standard author(year) format, as well as a (author, year) format. 
+
+In the first case you use `@CameronTrivedi2013` to obtain @CameronTrivedi2013.
+
+In the second case you use `[@CameronTrivedi2013]` to obtain [@CameronTrivedi2013].
+
+# Math
+
+You can write math in-line using latex standard syntax. For example `$\beta$` would create $\beta$. 
+
+To write longer equations you need to use `$$` before and after the expression. I find it useful to start a new line to do so. As in the following example:
+
+```latex
+$$y = \beta X + \varepsilon
+$$
+```
+
+$$y = \beta X + \varepsilon
+$$
+
+For multiple equation formulas, it may be convinient to use `\begin{aligned}` and `\end{aligned}`.
+
+```latex
+$$
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+$$
+```
+
+$$
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+$$
+
+These equations can be easily cross referenced using `{#eq-something}` after `$$`. Instead of something, we just need a unique id to call to. For example:
+
+```latex
+$$
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+$${#eq-ols}
+```
+
+$$
+\begin{aligned}
+y &= \beta X + \varepsilon \\
+\varepsilon &\sim N(0,\sigma^2)
+\end{aligned}
+$${#eq-ols}
+
+This can now be referenced using `@eq-ols`, this will provide @eq-ols. 
+
+# Tables and cross-references
+
+Starting with Quarto 1.4 it is really simple to add tables and cross-reference in text.
+
+## Adding pictures as tables
+ 
+::: {#tbl-table1}
+![](pic_table.png){fig-align=center}
+Table made with a pciture
+:::
+
+```latex
+::: {#tbl-table1}
+![](pic_table.png){fig-align=center}
+Table made with a pciture
+:::
+```
+
+`@tbl-table1`: @tbl-table1 is a table that was constructed in Excel, saved as figure, and reused in quarto.
+
+## Adding Mark down as tables
+
+## Adding HTML as tables
+
+## Adding Latex as tables
+
+
+# Adding References section
+
+to add reference section at the end of your document, you can use the following code:
+
+```md
+# References {.unnumbered}
+
+::: {#refs}
+:::
+```
+
+The option `{.unnumbered}` request not to add a number to the section. whereas the fenced code request to add the references in the section of your choice.  
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+
+{{< pagebreak >}}
+
+\appendix
+
+# Appendix on how to add an appendix
+
+I find that adding an appendix requires to pieces of code. First, after reference one may add `{{< pagebreak >}}` to start a new page. And use the latex code `\appendix`, to start the appendix section.
+
+# second appendix
+
+## sub appendix
