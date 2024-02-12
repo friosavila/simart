@@ -214,7 +214,7 @@
 
 \title{Simart Template}
 \author{
-Sarah Malloc\\
+Sarah Malloc\footnote{Corresponding Author}\\
 An Organization\\
 Boston\\
 \href{mailto:sm@example.org}{sm@example.org}\and 
@@ -243,6 +243,9 @@ to few tips on how to use quarto for producing articles.
     template, 
     demo 
 
+\textbf{\textit{JEL: }}
+    J11, 
+    A1 
 
 \thispagestyle{empty}
 \clearpage\pagenumbering{arabic}
@@ -269,6 +272,37 @@ and Trivedi (2013).
 
 In the second case you use \texttt{{[}@CameronTrivedi2013{]}} to obtain
 (Cameron and Trivedi, 2013).
+
+\section{Authors, Keywords, JEL codes}\label{authors-keywords-jel-codes}
+
+The template has been prepared and coded so you include the email, name
+of the one institution affiliation, and the city of that institution.
+You can also incorporate the attribute of corresponding author. You
+cannot have more than 1 affiliation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{  {-} }\NormalTok{name: Jon Dean}
+\NormalTok{    email: jdean@jdean.org}
+\NormalTok{    affiliations: }
+\SpecialStringTok{        {-} }\NormalTok{name: Jdean  }
+\NormalTok{          city: Somewhere, NU}
+\NormalTok{    attributes:}
+\NormalTok{        corresponding: true }
+\end{Highlighting}
+\end{Shaded}
+
+For Keywords and JEL codes you can simply use the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{keywords:}\CommentTok{ [word1, word2, word3]}
+\AnnotationTok{jelcodes:}\CommentTok{ [jel1, jel2, jel4]}
+\end{Highlighting}
+\end{Shaded}
+
+Make sure that you use square brackets \texttt{{[}{]}} when listing the
+keywords and jelcodes.
 
 \section{Math}\label{math}
 
@@ -343,36 +377,180 @@ cross-reference in text.
 
 \subsection{Adding pictures as tables}\label{adding-pictures-as-tables}
 
-\begin{table}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#tbl{-}table1 tbl{-}pos="H"\}}
+\AlertTok{![](pic\_table.png)}\NormalTok{\{fig{-}align=center\}}
+\NormalTok{Table made with a picture}
 
-\caption{\label{tbl-table1}}
+\NormalTok{Note: This was a png figure}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[H]
+
+\caption{\label{tbl-table1}Table made with a picture}
 
 \centering{
 
-\captionsetup{labelsep=none}\includegraphics{pic_table.png}
+\includegraphics{pic_table.png}
+
+Note: This was a png figure
 
 }
 
 \end{table}%
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{::: \{\#tbl{-}table1\}}
-\NormalTok{![](pic\_table.png)\{fig{-}align=center\}}
-\NormalTok{Table made with a pciture}
-\NormalTok{:::}
-\end{Highlighting}
-\end{Shaded}
-
 \texttt{@tbl-table1}: Table~\ref{tbl-table1} is a table that was
-constructed in Excel, saved as figure, and reused in quarto.
+constructed in Excel, saved as figure, and reused in quarto. Notice that
+the code \texttt{tbl-pos="H"} allows the table to be rendered close to
+where the code was provided. Otherwise, in latex style, it would be
+possitioned elsewhere.
+
+Notice as well that after the ``table'' was declared, the first line
+will correspond to the notes you add to your table, and the second one
+to the title of the table.
 
 \subsection{Adding Mark down as
 tables}\label{adding-mark-down-as-tables}
 
+Something that has been standard in quarto is to utilize markdown code
+to create tables. Adding them is straigh forward, as you simply need to
+include the code in text. But, to keep formatting standard, I will use
+the same syntax as earlier.
+
+The main difference is the use of \texttt{include} code. One advantage
+is that the main document would be cleaner. Also, when using Markdown
+tables, those will be rendered wherever the code was added.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#tbl{-}table2\}}
+
+\NormalTok{\{\{\textless{} include md\_table.md \textgreater{}\}\}}
+
+\NormalTok{Note: Random note}
+
+\NormalTok{Table using Markdown code}
+
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+
+\caption{\label{tbl-table2}Table using Markdown code}
+
+\tabularnewline
+
+\toprule\noalign{}
+Column 1 & Column 2 & Column 3 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Row 1 & Data & Data \\
+Row 2 & Data & Data \\
+Row 3 & Data & Data \\
+
+\end{longtable}
+
+Note: Random note
+
+\texttt{@tbl-table2} can be used to refer to Table~\ref{tbl-table2}.
+
 \subsection{Adding HTML as tables}\label{adding-html-as-tables}
 
+Using HTML code is just as simple. However, one needs to make sure that,
+in addition to the code that produces the table of interest, that table
+is fenced using
+\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=html\}}.
+This makes a explicit request to interpret HTML code as RAW code.
+
+As with the example with a picture code, however, you may want to use
+\texttt{tbl-pos="H"} to render the table where you want.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#tbl{-}table3 tbl{-}pos="H"\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=html\}}
+\InformationTok{\{\{\textless{} include html\_table.html \textgreater{}\}\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+\NormalTok{Note: Random note}
+
+\NormalTok{Table using HTML code  }
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lll@{}}
+
+\caption{\label{tbl-table3}Table using HTML code}
+
+\tabularnewline
+
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Column 1 & Column 2 & Column 3 \\
+Row 1 & Data & Data \\
+Row 2 & Data & Data \\
+Row 3 & Data & Data \\
+
+\end{longtable}
+
+Note: Random note
+
+\texttt{@tbl-table3} is used now to render Table~\ref{tbl-table3}.
+
 \subsection{Adding Latex as tables}\label{adding-latex-as-tables}
+
+Last but not least, Latex tables. They can also be rendered using the
+same strategy as before. Perhaps one important difference is that you
+could modify the Latex code directly to decide where to position the
+tables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#tbl{-}table4 tbl{-}pos="H"\}}
+\NormalTok{\{\{\textless{} include latex\_table.tex \textgreater{}\}\} }
+
+\NormalTok{Note: Random note}
+
+\NormalTok{Table using Latex code}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[H]
+
+\caption{\label{tbl-table4}Table using Latex code}
+
+\centering{
+
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\
+    \hline
+    Row 1 & Data & Data \\
+    \hline
+    Row 2 & Data & Data \\
+    \hline
+    Row 3 & Data & Data \\
+    \hline
+    \end{tabular}
+
+Note: Random note
+
+}
+
+\end{table}%
+
+\texttt{@tbl-table4} is used to reference Table~\ref{tbl-table4}
 
 \section{Adding References section}\label{adding-references-section}
 
