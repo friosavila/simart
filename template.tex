@@ -4,7 +4,7 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  11pts,
+  12pt,
 ]{article}
 
 \usepackage{amsmath,amssymb}
@@ -41,7 +41,7 @@
 \usepackage{xcolor}
 \usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{3}
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -212,6 +212,13 @@
   pdfcreator={LaTeX via pandoc}}
 
 
+\usepackage{datetime}
+\usepackage{booktabs}
+\usepackage{chngcntr}
+\usepackage{apptools}
+\AtAppendix{\counterwithin{table}{section}}
+\AtAppendix{\counterwithin{figure}{section}}
+
 \title{Simart Template}
 \author{
 Sarah Malloc\footnote{Corresponding Author}\\
@@ -381,9 +388,11 @@ cross-reference in text.
 \begin{Highlighting}[]
 \NormalTok{::: \{\#tbl{-}table1 tbl{-}pos="H"\}}
 \AlertTok{![](pic\_table.png)}\NormalTok{\{fig{-}align=center\}}
-\NormalTok{Table made with a picture}
 
 \NormalTok{Note: This was a png figure}
+
+\NormalTok{Table made with a picture}
+
 \NormalTok{:::}
 \end{Highlighting}
 \end{Shaded}
@@ -570,6 +579,8 @@ The option \texttt{\{.unnumbered\}} request not to add a number to the
 section. whereas the fenced code request to add the references in the
 section of your choice.
 
+\lipsum[1-4]
+
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
@@ -584,17 +595,100 @@ count data} (2nd ed.). Cambridge University Press.
 \newpage{}
 
 \appendix
+\pagenumbering{arabic}
+\renewcommand{\thepage}{\thesection\arabic{page}}
 
 \section{Appendix on how to add an
 appendix}\label{appendix-on-how-to-add-an-appendix}
 
-I find that adding an appendix requires to pieces of code. First, after
+I find that adding an appendix requires two pieces of code. First, after
 reference one may add \texttt{} to start a new page. And use the latex
 code \texttt{\textbackslash{}appendix}, to start the appendix section.
 
+Now, to re-start numnering, one needs to add
+\texttt{\textbackslash{}setcounter\{page\}\{1\}} right after
+\texttt{\textbackslash{}appendix}. However, if one wants to create new
+pages for every appendix section, that is possible using the following
+commands:
+
+\begin{verbatim}
+\pagenumbering{arabic}
+\renewcommand{\thepage}{\thesection\arabic{page}}
+\end{verbatim}
+
+To add Appendix Figures and Tables, one can just create them as usual.
+
+\subsection{Subsection Appendix}\label{subsection-appendix}
+
+Just an example.
+
+\lipsum[1-4]
+
+\begin{table}[H]
+
+\caption{\label{tbl-atable1}Appendix using Latex code}
+
+\centering{
+
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\
+    \hline
+    Row 1 & Data & Data \\
+    \hline
+    Row 2 & Data & Data \\
+    \hline
+    Row 3 & Data & Data \\
+    \hline
+    \end{tabular}
+
+Note: Random note
+
+}
+
+\end{table}%
+
+\lipsum[2-4]
+
+\newpage{}
+
+\setcounter{page}{1}
+
 \section{second appendix}\label{second-appendix}
 
+Or a Second picture
+
+\begin{table}[H]
+
+\caption{\label{tbl-atable2}Appendix using Latex code}
+
+\centering{
+
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\
+    \hline
+    Row 1 & Data & Data \\
+    \hline
+    Row 2 & Data & Data \\
+    \hline
+    Row 3 & Data & Data \\
+    \hline
+    \end{tabular}
+
+Note: Random note
+
+}
+
+\end{table}%
+
+\lipsum[1-2]
+
 \subsection{sub appendix}\label{sub-appendix}
+
+\lipsum[1-4]
 
 
 

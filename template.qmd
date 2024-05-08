@@ -15,7 +15,7 @@ author:
         city: Boston
         country: USA
         postal-code: 02210-1022
-      - A second affilication
+      - A second affiliation
     orcid: 0000-0000-0000-0000
     email: sm@example.org
     url: https://example.org/
@@ -131,9 +131,11 @@ Starting with Quarto 1.4 it is really simple to add tables and cross-reference i
 ```markdown
 ::: {#tbl-table1 tbl-pos="H"}
 ![](pic_table.png){fig-align=center}
-Table made with a picture
 
 Note: This was a png figure
+
+Table made with a picture
+
 :::
 ```
 
@@ -249,6 +251,8 @@ to add reference section at the end of your document, you can use the following 
 
 The option `{.unnumbered}` request not to add a number to the section. whereas the fenced code request to add the references in the section of your choice.  
 
+\lipsum[1-4]
+
 # References {.unnumbered}
 
 ::: {#refs}
@@ -258,11 +262,56 @@ The option `{.unnumbered}` request not to add a number to the section. whereas t
 {{< pagebreak >}}
 
 \appendix
+\pagenumbering{arabic}
+\renewcommand{\thepage}{\thesection\arabic{page}}
 
 # Appendix on how to add an appendix
 
-I find that adding an appendix requires to pieces of code. First, after reference one may add `{{< pagebreak >}}` to start a new page. And use the latex code `\appendix`, to start the appendix section.
+I find that adding an appendix requires two pieces of code. First, after reference one may add `{{< pagebreak >}}` to start a new page. And use the latex code `\appendix`, to start the appendix section.
+
+Now, to re-start numnering, one needs to add `\setcounter{page}{1}` right after `\appendix`. However, if one wants to create new pages for every appendix section, that is possible using the following commands:
+
+```
+\pagenumbering{arabic}
+\renewcommand{\thepage}{\thesection\arabic{page}}
+```
+
+To add Appendix Figures and Tables, one can just create them as usual.
+
+## Subsection Appendix
+
+Just an example.
+
+\lipsum[1-4]
+
+::: {#tbl-atable1 tbl-pos="H"}
+ {{< include latex_table.tex >}} 
+
+Note: Random note
+
+Appendix using Latex code
+:::
+
+\lipsum[2-4]
+
+{{< pagebreak >}}
+
+\setcounter{page}{1}
 
 # second appendix
 
+Or a Second picture 
+
+::: {#tbl-atable2 tbl-pos="H"}
+ {{< include latex_table.tex >}} 
+
+Note: Random note
+
+Appendix using Latex code
+:::
+
+\lipsum[1-2]
+
 ## sub appendix
+
+\lipsum[1-4]

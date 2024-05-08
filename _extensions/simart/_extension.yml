@@ -16,7 +16,7 @@ contributes:
       margin-top: 1in
       margin-left: 1in
       margin-right: 1in
-      fontsize: 11pt
+      fontsize: 12pt
       keep-tex: true  
       csl: "apa-no-ampersand.csl"
       template-partials: 
