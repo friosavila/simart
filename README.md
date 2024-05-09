@@ -1,5 +1,5 @@
 
-# <%= title %>
+# SIMART: A Quarto Template for a Simple Article style paper
 
 ## Creating a New Article
 
